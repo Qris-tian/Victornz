@@ -345,7 +345,7 @@ input[type="file"]:hover {
 }
 
 #downloadBtn:hover:not(:disabled) {
-  background: #222;
+  background: linear-gradient(90deg, #34D399, #10B981);
 }
 
 #downloadBtn:disabled {
