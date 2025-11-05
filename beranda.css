@@ -6,9 +6,6 @@ body {
   line-height: 1.6;
 }
 
-/* ========================= */
-/* HEADER DI ATAS */
-/* ========================= */
 .header {
   position: fixed;
   top: 0;
@@ -27,9 +24,6 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
-/* ========================= */
-/* TOMBOL GARIS 3 (MENU ICON) */
-/* ========================= */
 .menu-btn {
   position: fixed;
   top: 0px;
@@ -46,18 +40,15 @@ body {
   transform: scale(1.1);
 }
 
-/* ========================= */
-/* SIDEBAR KIRI */
-/* ========================= */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -240px; /* Awalnya tersembunyi */
+  left: -240px;
   width: 220px;
   height: 100%;
   background-color: #1f1f1f;
   color: #fff;
-  padding-top: 45px; /* supaya tidak ketutupan header */
+  padding-top: 45px;
   transition: left 0.3s ease;
   box-sizing: border-box;
   box-shadow: 3px 0 12px rgba(0, 0, 0, 0.4);
@@ -67,14 +58,10 @@ body {
   justify-content: space-between;
 }
 
-/* Saat aktif, sidebar muncul */
 .sidebar.active {
   left: 0;
 }
 
-/* ========================= */
-/* LINK MENU DI DALAM SIDEBAR */
-/* ========================= */
 .sidebar a {
   display: flex;
   align-items: center;
@@ -94,31 +81,28 @@ body {
 
 @media (max-width: 768px) {
   .sidebar-menu {
-    margin-top: -300px; /* di layar kecil jangan terlalu rapat */
+    margin-top: -300px;
   }
 }
 
-/* ===== SIDEBAR HEADER ===== */
 .sidebar-header {
   display: flex;
   align-items: flex-end;
-  gap: -2px;                 /* jarak antara logo dan teks */
-  padding: 18px 20px;        /* ruang di dalam header sidebar */
-  background-color: #1c1c1c; /* sedikit lebih gelap dari body sidebar */
+  gap: -2px;
+  padding: 18px 20px;
+  background-color: #1c1c1c;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-sizing: border-box;
 }
 
-/* Logo di sidebar */
 .sidebar-header img {
   width: 42px;
   height: 42px;
-  border-radius: 8px;        /* biar kelihatan smooth */
+  border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
-/* Teks nama tim (misal: Victornz) */
 .sidebar-header h2 {
   margin: 0;
   font-size: 20px;
@@ -128,7 +112,6 @@ body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Saat sidebar hover, beri sedikit highlight */
 .sidebar-header:hover {
   background-color: #252525;
   transition: background-color 0.25s ease;
@@ -140,7 +123,6 @@ body {
   transform: translateX(4px);
 }
 
-/* Active link (opsional, jika mau tandai halaman aktif) */
 .sidebar a.active {
   background-color: #2b2b2b;
   border-left: 4px solid #f7b500;
@@ -151,8 +133,8 @@ body {
   width: 50px !important;
   height: 50px !important;
   border-radius: 10px;
-  object-fit: cover;    /* biar proporsional dan nggak gepeng */
-  filter: none !important;  /* pastikan warnanya asli */
+  object-fit: cover;
+  filter: none !important;
   transition: transform 0.3s ease;
 }
 
@@ -160,9 +142,6 @@ body {
   transform: scale(1.05);
 }
 
-/* ========================= */
-/* ICON DI DALAM MENU */
-/* ========================= */
 .sidebar img {
   width: 22px;
   height: 22px;
@@ -175,9 +154,6 @@ body {
   filter: brightness(0) invert(0.8) sepia(1) hue-rotate(15deg) saturate(4);
 }
 
-/* ========================= */
-/* FOOTER SIDEBAR (OPSIONAL) */
-/* ========================= */
 .sidebar-footer {
   text-align: center;
   padding: 16px;
@@ -186,9 +162,6 @@ body {
   border-top: 1px solid #333;
 }
 
-/* ========================= */
-/* RESPONSIVE MOBILE */
-/* ========================= */
 @media (max-width: 768px) {
   .sidebar {
     width: 200px;
@@ -250,10 +223,10 @@ i {
   border-radius: 4px;
 }
 b {
-  color: #f59e0b; /* kuning-oranye cerah */
+  color: #f59e0b;
   font-weight: 600;
   letter-spacing: 0.3px;
-  background: #fff3bf; /* highlight lembut */
+  background: #fff3bf;
   padding: 2px 5px;
   border-radius: 4px;
 }
@@ -294,7 +267,7 @@ strong {
   background-color: #e0a400;
   transform: translateY(-2px);
 }
-/* ===== KONTAINER SEMUA PLAYER ===== */
+
 .players-container {
   display: flex;
   flex-wrap: wrap;
@@ -303,13 +276,11 @@ strong {
   margin: 40px 0;
 }
 
-/* ===== KONTAINER INDIVIDU PLAYER ===== */
 .player-info {
   position: relative;
   display: inline-block;
 }
 
-/* ===== TOMBOL NAMA PLAYER ===== */
 .player-btn {
   background-color: #f7b500;
   color: black;
@@ -324,15 +295,16 @@ strong {
 .player-btn:hover {
   background-color: #e0a400;
 }
+
 .player-section {
   margin-top: 0;
 }
+
 .player {
   margin: 0;
   position: relative;
 }
 
-/* Tombol utama (nama player) */
 .player-btn {
   width: 100%;
   background-color: #ffe08a;
@@ -356,13 +328,12 @@ strong {
   transform: scale(1.02);
 }
 
-/* Info drop-down */
 .player-info {
   max-height: 0;
   overflow: hidden;
-  background: #fff5cc; /* sama warna seperti tombol */
+  background: #fff5cc;
   border-radius: 0 0 10px 10px;
-  margin-top: -10px; /* sedikit overlap agar rapi */
+  margin-top: -10px;
   margin-left: 8px;
   width: 300px;
   margin-bottom: 6px;
@@ -381,7 +352,6 @@ strong {
   z-index: 1;
 }
 
-/* Saat aktif (terbuka) */
 .player.active .player-info {
   max-height: 120px;
   padding: 10px 15px;
@@ -394,13 +364,14 @@ strong {
   margin-bottom: 20px;
 }
 
-/* Paragraf dalam info */
 .player-info p {
   margin: 4px 0;
 }
+
 .player {
   margin-bottom: -16px;
 }
+
 .player-section .player:first-child {
-  margin-top: 10px; /* 🔹 jarak antara judul dan tombol pertama */
+  margin-top: 10px;
 }
