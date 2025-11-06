@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pasang Skin + Sidebar</title>
-  
-  <!-- CSS Skin -->
+  <title>Pasang Skin</title>
   <link rel="stylesheet" href="skin.css">
 </head>
 <body>
@@ -16,7 +14,7 @@
   <h2>Pasang Skin</h2>
 </div>
 
-<!-- Sidebar -->
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <img src="logo.png" alt="Logo Victornz" class="sidebar-logo">
@@ -50,22 +48,26 @@
     <p>© 2025 Victornz</p>
   </div>
 </div>
+
 <!-- KONTEN PASANG SKIN -->
 <div class="content">
   <h1><b>Pasang Template</b></h1>
+
   <div class="ytta">
-    <label><b>Pilih model:</b></label>
+    <label><b>Pilih resolusi :</b></label>
     <select id="model">
-      <option value="steve">Steve (Wide)</option>
-      <option value="alex">Alex (Slim)</option>
+      <option value="64">64 Pixel (Standar)</option>
+      <option value="128">128 Pixle (HD)</option>
     </select>
   </div>
+
   <div class="ytta">
     <label><b>Upload Skin :</b></label>
     <input type="file" id="skinInput" accept="image/png"><br>
   </div>
+
   <button id="processBtn">Pasang Baju</button>
-  <button id="downloadBtn" disabled>Download Skin </button>
+  <button id="downloadBtn" disabled>Download Skin</button>
 
   <div id="progressContainer">
     <div id="progressBar"></div>
@@ -100,7 +102,7 @@ document.querySelectorAll('.sidebar a').forEach(link => {
 });
 </script>
 
-<!-- SCRIPT PASANG SKIN -->
+<!-- SCRIPT PASANG SKIN DENGAN VALIDASI RESOLUSI -->
 <script>
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -112,87 +114,80 @@ const progressContainer = document.getElementById("progressContainer");
 const progressBar = document.getElementById("progressBar");
 const statusText = document.getElementById("statusText");
 
-const outfitImg = new Image();
-outfitImg.src = "./template.png";
-
-outfitImg.onerror = () => {
-  statusText.textContent = "❌ Gagal memuat template.png. Pastikan file ada di folder yang sama.";
-};
-
-function readFile(input, callback) {
-  if (input.files && input.files[0]) {
-    const reader = new FileReader();
-    reader.onloadstart = () => updateProgress(10, "Membaca file skin...");
-    reader.onprogress = e => {
-      if (e.lengthComputable) {
-        const percent = Math.min(10 + (e.loaded / e.total) * 20, 30);
-        updateProgress(percent, "Membaca skin...");
-      }
-    };
-    reader.onload = e => callback(e.target.result);
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
 function updateProgress(percent, text) {
   progressContainer.style.display = "block";
   progressBar.style.width = percent + "%";
   statusText.textContent = text;
 }
 
-processBtn.onclick = () => {
+function readFile(input, callback) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = e => callback(e.target.result);
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+processBtn.addEventListener("click", () => {
   if (!skinInput.files[0]) {
     alert("Silakan upload file skin dulu!");
     return;
   }
 
-  downloadBtn.disabled = true;
-  updateProgress(0, "Menyiapkan...");
+  const res = modelSelect.value;
+  const outfitImg = new Image();
+  outfitImg.src = res === "128" ? "./template128.png" : "./template.png";
 
-  const model = modelSelect.value;
   readFile(skinInput, (skinSrc) => {
     const skinImg = new Image();
-
     skinImg.onload = () => {
-      updateProgress(60, "Memuat skin...");
+      const width = skinImg.width;
+      const height = skinImg.height;
+
+      // Validasi ukuran skin
+      if ((width !== 64 && width !== 128) || (height !== 64 && height !== 128)) {
+        updateProgress(0, "❌ Skin tidak valid. Pastikan ukurannya 64x64 atau 128x128.");
+        return;
+      }
+
+      // Cek apakah resolusi sesuai dengan pilihan
+      if (res === "64" && width === 128) {
+        updateProgress(0, "⚠️ Skin ini beresolusi 128px. Ubah pilihan di atas ke 128px.");
+        return;
+      } else if (res === "128" && width === 64) {
+        updateProgress(0, "⚠️ Skin ini beresolusi 64px. Ubah pilihan di atas ke 64px.");
+        return;
+      }
+
+      updateProgress(50, "Memproses skin...");
+
       outfitImg.onload = () => {
-        updateProgress(80, "Menggabungkan...");
+        canvas.width = width;
+        canvas.height = height;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(skinImg, 0, 0);
+        ctx.drawImage(skinImg, 0, 0, width, height);
+        ctx.drawImage(outfitImg, 0, 0, width, height);
 
-        if (model === "steve") {
-          ctx.clearRect(16, 32, 24, 16);
-          ctx.clearRect(40, 32, 16, 16);
-          ctx.clearRect(48, 48, 16, 16);
-        } else {
-          ctx.clearRect(16, 32, 24, 16);
-          ctx.clearRect(36, 32, 12, 16);
-          ctx.clearRect(44, 48, 12, 16);
-        }
-
-        ctx.drawImage(outfitImg, 0, 0);
-        updateProgress(100, "✅ Selesai! Klik Download");
+        updateProgress(100, "✅ Selesai! Klik Download.");
         downloadBtn.disabled = false;
       };
-      outfitImg.src = "./template.png";
     };
 
     skinImg.onerror = () => {
       updateProgress(0, "❌ File skin tidak valid.");
     };
 
-    updateProgress(40, "Memuat gambar skin...");
     skinImg.src = skinSrc;
   });
-};
+});
 
-downloadBtn.onclick = () => {
+downloadBtn.addEventListener("click", () => {
   const link = document.createElement("a");
-  link.download = "hasil.png";
+  link.download = "TemplatVictornZ.png";
   link.href = canvas.toDataURL("image/png");
   link.click();
-};
+});
 </script>
 
 </body>
