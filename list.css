@@ -351,7 +351,7 @@ strong {
   padding: 10px;
   border-radius: 0 10px 10px 0;
   border-left: 4px solid #f7b500;
-  font-size: 14px;
+  font-size: 16px;
   margin-left: -5px;
   color: gray;
 }
@@ -439,14 +439,14 @@ canvas {
   font-size: 16px;
   border: none;
   border-radius: 8px;
-  background-color: #f7b500;
+  background-color: #f7b500 !important;
   color: white;
   cursor: pointer;
   transition: 0.2s;
   min-width: 150px;
 }
 #sortSelect:hover {
-  background-color: #e0a800;
+  transform: translateY(8);
 }
 
 /* Responsif di layar kecil */
@@ -475,4 +475,18 @@ canvas {
 /* Terapkan animasi saat overlay muncul */
 .overlay.show .overlay-content {
   animation: dropFromHeader 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+#searchInput {
+  padding-left: 38px;
+  background: url('search.png') no-repeat 10px center;
+  background-size: 20px 20px;
+}
+
+#sortSelect {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('arrow-down.png') no-repeat right 10px center;
+  background-size: 20px 20px;
+  padding-right: 30px;
 }
