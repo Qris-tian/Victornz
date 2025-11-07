@@ -79,7 +79,7 @@ const players = {
     timezone: "WIB",
     free: "malam",
     hobby: "Fishing and reading a novel",
-    cita: "Bartender ",
+    cita: "Bartender",
     moto: "Stay true to yourself",
     about: "I am a mighty person",
     isSlim: false
