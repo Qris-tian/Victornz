@@ -69,6 +69,20 @@ const players = {
     moto: "It's the one and only G Y double Z",
     about: "Teknisi Redstone yang berorientasi pada efisiensi dengan keahlian ganda dalam optimalisasi ekonomi Villager. Berpengalaman dalam merancang dan mengeksekusi sistem otomatisasi skala besar yang resource-friendly dan server-friendly (minim lag). Memiliki pemahaman mendalam tentang mekanika inti permainan (game mechanics) untuk menemukan solusi inovatif. Spesialis dalam mengubah sirkuit yang rumit menjadi desain yang ringkas dan andal. Terbukti berhasil membangun infrastruktur trading hall yang mampu mengamankan penawaran dagang (trade) paling berharga dengan diskon maksimum. Terampil dalam troubleshooting sirkuit yang ada dan siap menerapkan otomatisasi penuh untuk mencapai kemandirian sumber daya.",
     isSlim: false
+  },
+  player6: {
+    name: "setya_315104",
+    skin: "skin/a.png",
+    discord: "setya031",
+    rank: "Legend",
+    role: "Grinder",
+    timezone: "WIB",
+    free: "malam",
+    hobby: "Fishing and reading a novel",
+    cita: "Bartender ",
+    moto: "Stay true to yourself",
+    about: "I am a mighty person",
+    isSlim: false
   }
 };
 
