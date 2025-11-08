@@ -352,8 +352,8 @@ strong {
   padding: 10px;
   border-radius: 0 10px 10px 0;
   border-left: 4px solid #f7b500;
-  font-size: 16px;
-  margin-left: -5px;
+  font-size: 12px;
+  margin-left: -20px;
   color: gray;
 }
 
@@ -368,6 +368,7 @@ strong {
   color: darkgray;
   text-align: center;
   border-top: 4px solid #f7b500;
+  font-size: 16px;
 }
 .player-desc .info-row {
   margin-bottom: 20px;
@@ -384,7 +385,7 @@ strong {
 /* Kotak label */
 .info-label {
   display: inline-block;      /* penting supaya bisa beri lebar tetap */
-  min-width: 54px;            /* lebar kotak label */
+  min-width: 50px;            /* lebar kotak label */
   text-align: left;          /* label rata kanan */
   margin-right: 0px;          /* jarak ke ':' */
 }
@@ -393,7 +394,7 @@ strong {
 .colon {
   margin-right: 0px;          /* jarak ':' ke value */
   display: inline-block;      /* supaya margin efektif */
-  width: 12px;                /* lebar tetap untuk semua ':' sejajar */
+  width: 8px;                /* lebar tetap untuk semua ':' sejajar */
   text-align: center;
 }
 canvas {
