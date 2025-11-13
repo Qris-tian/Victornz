@@ -114,7 +114,7 @@ const players = {
   },
   player9: {
     name: "Rafz5381",
-    skin: "skin/raft.png",
+    skin: "skin/steve.png",
     discord: "Fearman._",
     rank: "Legend",
     role: "Builder",
@@ -156,7 +156,7 @@ const players = {
   },
   player12: {
     name: "Bayu_Alif7693",
-    skin: "skin/alif.png",
+    skin: "skin/steve.png",
     discord: "bayu_alif",
     rank: "Master",
     role: "Builder",
