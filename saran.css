@@ -263,8 +263,8 @@ strong {
   width: fit-content;          /* ukuran menyesuaikan isi */
   max-width: 400px;            /* batas lebar */
   border: 1px solid #ddd;
-  margin-left: 10px;
-  margin-right: 10px;
+  display: block;
+  margin: 0 auto;
 }
 
 .judul {
