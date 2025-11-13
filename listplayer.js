@@ -156,7 +156,7 @@ const players = {
   },
   player12: {
     name: "Bayu_Alif7693",
-    skin: "skin/a.png",
+    skin: "skin/alif.png",
     discord: "bayu_alif",
     rank: "Master",
     role: "Builder",
