@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build</title>
-  <link rel="stylesheet" href="build.css">
+  <title>Hasil Build</title>
+  <link rel="stylesheet" href="fotbar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -72,7 +73,21 @@
 <!-- KONTEN POLLOSAN -->
 <div class="content">
   <!-- Konten halaman baru bisa ditambahkan di sini -->
-  <h1>Cooming Soon</h1>
+  <h1>Hasil Build</h1>
+</div>
+<div class="gallery">
+  
+  <div class="frame">
+    <div class="pin"></div>
+    <img class="foto" src="asa.png">
+    <div class="judul-foto">Foto 1</div>
+  </div>
+</div>
+<!-- OVERLAY FOTO (letakkan tepat setelah .gallery) -->
+<div id="photoOverlay" class="photo-overlay" aria-hidden="true">
+  <button id="overlayClose" class="overlay-close" aria-label="Tutup">&times;</button>
+  <img id="overlayImage" src="" alt="">
+  <div id="overlayCaption" class="overlay-caption"></div>
 </div>
 
 <script>
@@ -99,6 +114,98 @@ document.querySelectorAll('.sidebar a').forEach(link => {
   link.addEventListener('click', () => {
     sidebar.classList.remove('active');
   });
+});
+// overlay elements
+const photoOverlay = document.getElementById('photoOverlay');
+const overlayImage = document.getElementById('overlayImage');
+const overlayCaption = document.getElementById('overlayCaption');
+const overlayClose = document.getElementById('overlayClose');
+
+// helper
+function openOverlay(src, caption) {
+  overlayImage.src = src;
+  overlayCaption.textContent = caption || '';
+  photoOverlay.classList.add('open');
+  photoOverlay.setAttribute('aria-hidden', 'false');
+  // kunci scroll halaman ketika overlay aktif
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOverlay() {
+  photoOverlay.classList.remove('open');
+  photoOverlay.setAttribute('aria-hidden', 'true');
+  overlayImage.src = '';
+  // kembalikan scroll
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+}
+
+// attach events to frames:
+// - hover (desktop): mouseenter -> buka ; mouseleave -> tutup
+// - click/tap (mobile): click -> buka (toggle)
+document.querySelectorAll('.frame').forEach(frame => {
+  const img = frame.querySelector('.foto');
+  const titleEl = frame.querySelector('.judul-foto');
+  const title = titleEl ? titleEl.innerText.trim() : '';
+
+  // mouse hover (desktop)
+  frame.addEventListener('mouseenter', (e) => {
+    // ignore if touch device (to avoid double open)
+    if ('ontouchstart' in window) return;
+    openOverlay(img.src, title);
+  });
+  frame.addEventListener('mouseleave', (e) => {
+    if ('ontouchstart' in window) return;
+    closeOverlay();
+  });
+
+  // click/tap (mobile & desktop)
+  img.addEventListener('click', (e) => {
+    // on touch devices: toggle overlay on click
+    if (photoOverlay.classList.contains('open')) {
+      closeOverlay();
+    } else {
+      openOverlay(img.src, title);
+    }
+    e.stopPropagation();
+  });
+});
+
+// close handlers
+overlayClose.addEventListener('click', closeOverlay);
+photoOverlay.addEventListener('click', (e) => {
+  // klik di luar gambar (alias pada layer overlay) akan menutup
+  if (e.target === photoOverlay) closeOverlay();
+});
+
+// juga tutup tombol ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeOverlay();
+});
+const frames = document.querySelectorAll('.frame');
+
+// Batas minimal & maksimal derajat miring
+const minDeg = 0;   // minimal kemiringan
+const maxDeg = 4;   // maksimal kemiringan
+
+// Simpan rotasi sebelumnya agar tidak mirip
+let lastDeg = null;
+
+frames.forEach(frame => {
+  let deg;
+
+  // Ulangi sampai beda cukup jauh dari rotasi sebelumnya
+  do {
+    const arah = Math.random() < 0.5 ? -1 : 1;
+    const besar = (Math.random() * (maxDeg - minDeg) + minDeg).toFixed(2);
+    deg = arah * besar;
+  } while (lastDeg !== null && Math.abs(deg - lastDeg) < 1.2);
+
+  lastDeg = deg;
+
+  frame.style.transform = `rotate(${deg}deg)`;
+  frame.style.transformOrigin = 'top center'; // agar berputar dari pin
 });
 </script>
 
