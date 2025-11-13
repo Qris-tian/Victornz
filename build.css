@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'minecraft'; /* Nama bebas */
+  src: url('minercraftory.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -213,11 +219,13 @@ body {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 h1 {
+  font-family: minecraft;
   color: #f59e0b;
   text-align: center;
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-size: 4em;
+  margin-top: -5px;
+  margin-bottom: -22px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
 }
 i {
   font-style: italic;
@@ -240,98 +248,132 @@ strong {
   font-size: 14px;
   margin-bottom: 20px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-.deskripsi {
-  color: #2c2c2c;
-}
-/* ===== Chat Popup ===== */
-.chat-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #1e88e5;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 24px;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  z-index: 1000;
-}
-
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  max-height: 400px;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-
-.chat-header {
-  background: #1e88e5;
-  color: white;
-  padding: 10px;
+}/* Kontainer utama */
+.gallery {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;         /* agar otomatis pindah ke bawah */
+  justify-content: center; /* posisi tengah */
+  gap: 35px;               /* jarak antar foto */
+  padding: 20px;
+}
+
+/* Setiap bingkai foto */
+.frame {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Gambar */
+.foto {
+  width: 130px;
+  height: 100px;
+  object-fit: cover;
+  border: 8px solid white;
+  border-bottom-width: 28px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  display: block;
+}
+
+/* Judul di bawah foto */
+.judul-foto {
+  margin-top: -28px;
+  font-size: 16px;
+  color: gray;
+  font-weight: bold;
+  font-family: "Satisfy", cursive;
+}
+.pin {
+  position: absolute;
+  top: -8px;
+  left: 50%;                 /* tengah horizontal */
+  transform: translateX(-50%); /* agar benar-benar di tengah */
+  width: 13px;
+  height: 13px;
+  background: red;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+/* ---------- Overlay foto ---------- */
+.photo-overlay {
+  display: none;                /* default: tersembunyi */
+  position: fixed;
+  inset: 0;                     /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.photo-overlay.open {
+  display: flex;
+  animation: overlayFade 200ms ease;
+}
+
+.photo-overlay img {
+  width: 280px;
+  height: 225px;
+  border: 12px solid white !important;
+  border-bottom-width: 44px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+/* caption/judul di bawah gambar */
+.overlay-caption {
+  margin-top: -44px;
+  color: gray;
+  font-family: "Satisfy", cursive;
+  font-size: 26px !important;
+  text-align: center;
+  word-break: break-word;
+  max-width: 90%;
   font-weight: bold;
 }
 
-.chat-header button {
+/* tombol close */
+.overlay-close {
+  position: absolute;
+  top: 18px;
+  right: 26px;
   background: transparent;
   border: none;
-  color: white;
-  font-size: 18px;
+  color: #fff;
+  font-size: 38px;
   cursor: pointer;
+  line-height: 1;
+  padding: 6px;
+  user-select: none;
 }
 
-.chat-messages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column-reverse; /* terbaru di atas */
+.overlay-close:hover { transform: scale(1.08); color: #ffdf70; }
+
+/* animasi */
+@keyframes overlayFade {
+  from { opacity: 0 }
+  to   { opacity: 1 }
 }
 
-.chat-messages p {
-  background: #f1f1f1;
-  padding: 5px 10px;
-  margin: 5px 0;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Responsif: kalau layar sangat kecil, jadikan border lebih kecil */
+@media (max-width: 420px) {
+  .photo-overlay img { border-width: 6px; max-height: 72%; }
+  .overlay-caption { font-size: 18px; }
+  .overlay-close { font-size: 34px; top: 12px; right: 16px; }
+}
+/* Titik rotasi berada di atas tengah (pin) */
+.frame {
+  transform-origin: top center;
+  transition: transform 0.4s ease;
 }
 
-.chat-messages button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-#chatInput {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: calc(100% - 70px);
-  margin: 5px;
-}
-
-#sendMsg {
-  padding: 5px 10px;
-  margin: 5px;
-  background: #1e88e5;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* Saat di-hover, sedikit lurus agar fokus */
+.frame:hover {
+  transform: rotate(0deg) scale(1.03);
+  z-index: 3;
 }
