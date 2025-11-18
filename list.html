@@ -38,29 +38,15 @@
 <!-- KONTEN -->
 <div class="content">
   <h1>List Member Victornz</h1>
-  
+
   <div class="player-controls">
-    <button onclick="window.open('https://forms.gle/QtGsjuuR72Wfr5SeA', '_blank')" class="form">Form Isi List</button>
     <input type="text" id="searchInput" placeholder="Search Player">
-    <select id="sortSelect">
-      <option value="default">Default</option>
-      <option value="az">A-Z</option>
-      <optgroup label="Rank:">
-        <option value="Mythic">Mythic</option>
-        <option value="Legend">Legend</option>
-        <option value="Elite">Elite</option>
-        <option value="Master">Master</option>
-        <option value="Rakyat">Rakyat</option>
-      </optgroup>
-      <optgroup label="Role:">
-        <option value="Builder">Builder</option>
-        <option value="Grinder">Grinder</option>
-      </optgroup>
-    </select>
+    <button id="sortBtn">Sort A-Z / Default</button>
+    <button onclick="window.open('https://forms.gle/QtGsjuuR72Wfr5SeA', '_blank')" class="form">Form Isi List</button>
   </div>
 
-  <!-- DATA PLAYER DIPISAH -->
-  <div id="playerContainer"></div>
+  <!-- AUTO PLAYER LIST (DIBUAT OLEH JS) -->
+  <div class="player-list" id="playerList"></div>
 </div>
 
 <!-- OVERLAY PLAYER INFO -->
@@ -79,31 +65,18 @@
         <div class="info-row"><b class="info-label">Waktu</b><span class="colon">:</span><span id="ov-timezone"></span></div>
         <div class="info-row"><b class="info-label">Luang</b><span class="colon">:</span><span id="ov-free"></span></div>
         <div class="info-row"><b class="info-label">Hobi</b><span class="colon">:</span><span id="ov-hobby"></span></div>
-        <div class="info-row"><b class="info-label">Cita2</b><span class="colon">:</span><span id="ov-cita"></span></div>
+        <div class="info-row"><b class="info-label">Cita²</b><span class="colon">:</span><span id="ov-cita"></span></div>
       </div>
 
       <div class="player-desc">
         <div class="info-row"><b>Moto :</b><br><span id="ov-moto"></span></div>
-        <div class="info-row"><b>Tentang :</b><br>
-          <span id="ov-about"></span><br><br><b>______________________________________</b>
-        </div>
+        <div class="info-row"><b>Tentang :</b><br><span id="ov-about"></span><br><br><b>______________________________________</b></div>
       </div>
+
     </div>
   </div>
 </div>
 
 <script src="list.js"></script>
-<script src="data-list.js"></script>
-
-<!-- SCRIPT UNTUK LOAD DATA PLAYER -->
-<script>
-  fetch("data-list.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("playerContainer").innerHTML = html;
-    })
-    .catch(err => console.error("Gagal memuat data:", err));
-</script>
-
 </body>
 </html>
