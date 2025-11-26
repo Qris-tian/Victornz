@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda</title>
+  <link rel="stylesheet" href="beranda.css">
+  <link rel="stylesheet" href="sidebar.css">
+</head>
+<body data-title="Beranda">
+
+<!-- TEMPAT SIDEBAR DIMASUKKAN -->
+<div id="sidebar-container"></div>
+
+<!-- KONTEN -->
+<div class="content">
+  <h1>Selamat Datang!</h1>
+  <p class="deskripsi">
+    Halo teman teman kalian sudah tau apa itu Victornz? yupp Victornz sendiri adalah team Minecraft dari server pn yaa teman teman, kalian sudah pasti tau dong, Team ini sendiri di bentuk pada Tanggal <br>
+    <b>26 agustus 2025</b>, Victornz ini awalnya di dirikan oleh 4 orang yaitu dengan
+  </p>
+
+  <div class="player-section">
+    <h3 style="font-weight:bold; margin-bottom:10px;">Gamer Tag :</h3>
+
+    <!-- Player 1 -->
+    <div class="player">
+      <button class="player-btn">Elrumi19</button>
+      <div class="player-info">
+        <p><strong>WhatsApp:</strong> 081356520810</p>
+        <p><strong>Discord:</strong> eroitina</p>
+      </div>
+    </div>
+
+    <!-- Player 2 -->
+    <div class="player">
+      <button class="player-btn">frexymax</button>
+      <div class="player-info">
+        <p><strong>WhatsApp:</strong> 081295128005</p>
+        <p><strong>Discord:</strong> frexyy0166</p>
+      </div>
+    </div>
+
+    <!-- Player 3 -->
+    <div class="player">
+      <button class="player-btn">AsaaNiBozz</button>
+      <div class="player-info">
+        <p><strong>WhatsApp:</strong> 089676499666</p>
+        <p><strong>Discord:</strong> Moch_hasya</p>
+      </div>
+    </div>
+
+    <!-- Player 4 -->
+    <div class="player">
+      <button class="player-btn">Christian252010</button>
+      <div class="player-info">
+        <p><strong>WhatsApp:</strong> 089524253642</p>
+        <p><strong>Discord:</strong> christianjuniadi</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="deskripsi">
+    dengan nama awal team adalah <b>BRUTAL</b>, Dan ya team ini terbentuk untuk mencari teman dalam server <i>ProwNetwork</i> dengan adanya team Victornz kalian bisa build bareng bikin farm bareng dan bersenang senang, semoga kalian betah yaa teman teman
+  </p>
+</div>
+
+<div class="bottom-section">
+  <p class="bottom-text">Bagi Member Baru :</p>
+  <a href="https://forms.gle/hhC9Y7bnVCMUWEcZ7" class="btn-bottom">Silahkan Isi Link Form Ini</a>
+</div>
+
+<script>
+/* ======================================================
+   LOAD SIDEBAR + FUNGSI-FUNGSI
+====================================================== */
+fetch('sidebar.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('sidebar-container').innerHTML = html;
+
+    const sidebar = document.querySelector('.sidebar');
+    const menuBtn = document.getElementById('menuBtn');
+
+    /* SIDEBAR TOGGLE + ANIMASI MENU BTN */
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sidebar.classList.toggle('active');
+      menuBtn.classList.toggle('active'); // animasi garis → panah
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove('active');
+        menuBtn.classList.remove('active'); // reset animasi
+      }
+    });
+
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        menuBtn.classList.remove('active'); // reset animasi
+      });
+    });
+
+    /* MENANDAI HALAMAN AKTIF */
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      const target = link.getAttribute('href');
+      link.classList.remove('active');
+      if (target === currentPage) link.classList.add('active');
+    });
+
+    /* SET JUDUL HEADER */
+    const pageTitle = document.getElementById("pageTitle");
+    if (pageTitle) {
+      pageTitle.textContent = document.body.getAttribute("data-title");
+    }
+  });
+
+/* ======================================================
+   DROPDOWN PLAYER
+====================================================== */
+const players = document.querySelectorAll('.player');
+
+players.forEach(player => {
+  const btn = player.querySelector('.player-btn');
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    players.forEach(p => {
+      if (p !== player) p.classList.remove('active');
+    });
+
+    player.classList.toggle('active');
+  });
+});
+
+document.addEventListener('click', () => {
+  players.forEach(p => p.classList.remove('active'));
+});
+</script>
+
+</body>
+</html>
