@@ -1,0 +1,198 @@
+.content {
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+h1 {
+  color: #f59e0b;
+  font-family: minecraft;
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.gamers ul {
+  list-style: none;
+  padding: 0;
+}
+
+.gamers li {
+  background: #ffe599;
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.content {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+button:hover, li:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+i {
+  font-style: italic;
+  color: #6b7280;
+  background: #fff4cc;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+b {
+  color: #f59e0b;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: #fff3bf;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+strong {
+  color: #f59e0b;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.deskripsi {
+  color: #2c2c2c;
+}
+.bottom-section {
+  text-align: center;
+  margin: 50px 0 40px;
+}
+
+.bottom-text {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #f59e0b;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn-bottom {
+  background-color: #f7b500;
+  color: white;
+  text-decoration: none;
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-bottom:hover {
+  background-color: #e0a400;
+  transform: translateY(-2px);
+}
+
+.players-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.player-info {
+  position: relative;
+  display: inline-block;
+}
+
+.player-btn {
+  background-color: #f7b500;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.player-btn:hover {
+  background-color: #e0a400;
+}
+
+.player-section {
+  margin-top: 0;
+}
+
+.player {
+  margin: 0;
+  position: relative;
+}
+
+.player-btn {
+  width: 100%;
+  background-color: #ffe08a;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s
+  margin-bottom: 10px;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.player-btn:hover {
+  background-color: #ffe08a;
+  transform: scale(1.02);
+}
+
+.player-info {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff5cc;
+  border-radius: 0 0 10px 10px;
+  margin-top: -10px;
+  margin-left: 8px;
+  width: 300px;
+  margin-bottom: 6px;
+  padding: 0 15px;
+  font-size: 14px;
+  color: #222;
+  line-height: 1.5;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-5px);
+  transition:
+    max-height 0.5s ease,
+    padding 0.4s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  z-index: 1;
+}
+
+.player.active .player-info {
+  max-height: 120px;
+  padding: 10px 15px;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    max-height 0.45s ease,
+    opacity 0.35s ease 0.05s,
+    transform 0.4s ease;
+  margin-bottom: 20px;
+}
+
+.player-info p {
+  margin: 4px 0;
+}
+
+.player {
+  margin-bottom: -16px;
+}
+
+.player-section .player:first-child {
+  margin-top: 10px;
+}
