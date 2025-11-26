@@ -60,14 +60,14 @@ strong {
   color: #f59e0b;                /* warna hitam */
   font-weight: bold;
   font-family: minecraft;
-  font-size: 20px;             /* ukuran judul */
+  font-size: 22px;             /* ukuran judul */
   margin-bottom: -6px;          /* jarak ke teks bawah */
   margin-top: -2px;
 }
 
 .teks {
   color: #aaa;                 /* abu-abu lembut */
-  font-size: 14px;             /* lebih kecil */
+  font-size: 16px;             /* lebih kecil */
   line-height: 1.5;            /* jarak antar baris */
   border-top: 2.5px solid rgba(218,218,218,0.9);
   borer-bottom: 2px solid rgba(221,221,221,0.7);
@@ -76,7 +76,7 @@ strong {
 }
 .teks2, .teks3 {
   color: #aaa;                 /* abu-abu lembut */
-  font-size: 14px;             /* lebih kecil */
+  font-size: 16px;             /* lebih kecil */
   line-height: 1.5;            /* jarak antar baris */
   borer-top: 2.5px solid rgba(218,218,218,0.9);
   borer-bottom: 2px solid rgba(221,221,221,0.7);
