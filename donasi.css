@@ -1,0 +1,196 @@
+.icon-rf {
+      width: 22px;                 /* ukuran icon */
+      height: 22px;
+      filter: brightness(0) invert(1);   /* ubah icon jadi putih */
+      display: inline-block;
+      vertical-align: middle;
+      object-fit: contain;         /* menjaga proporsi icon */
+      image-rendering: crisp-edges; /* biar tajam (bagus untuk pixel icon) */
+      transition: 0.2s filter;     /* animasi jika filter berubah */
+    }
+    
+    .refresh {
+      width: 36.5px;
+      height: 36.5px;
+      background-color: #f7b500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+      vertical-align: middle;
+    }
+    
+    .refresh:active {
+      background-color: #e6a200;
+      transform: scale(0.94);
+    }
+    .controls {
+      text-align: center;
+    }
+    
+    .search {
+      background: url("icon/text-search.png") no-repeat 10px center;
+      background-size: 24px; 
+      background-position: 10px 5px;
+      background-color: white;
+      border: 2px solid #f7b500;
+      border-radius: 6px;
+      padding: 8px 10px 8px 44px;   /* padding kiri diperbesar agar icon tidak menutupi teks */
+      width: 71%;
+    }
+    
+    .hint {
+      text-align: center;
+      color: gray;
+      font-size: 14px;
+    }
+    .container {
+      max-width:1100px;
+      margin:82px auto;
+      padding:0 18px; }
+    h1 {
+      font-family: minecraft, sans-serif;
+      color: #f59e0b;
+      margin:0 0 8px;
+      text-align:center;
+      font-size: 2.2em;
+      margin-top: -60px;
+    }
+    .loading, .error {
+      padding:20px;
+      text-align:center;
+      color: #333;
+    }
+
+    /* ====== LEADERBOARD CARD ====== */
+    .leaderboard-list {
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+      margin-top:18px;
+    }
+
+    .donation-item {
+      background:#fff8dc;
+      border:2px solid #f7b500;
+      padding:16px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      transition:0.18s;
+    }
+    .donation-itm:hover {
+      background:#fff4b5;
+      transform:scale(1.06);
+    }
+
+    /* ANGKA BESAR */
+    .rank-big {
+      font-family:minecraft;
+      font-size:40px;
+      font-weight:900;
+      color:#f7b500;
+      width:75px;
+      text-align:center;
+      flex-shrink:0;
+    }
+
+    /* Blok kanan */
+    .info-right {
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      flex:1;
+    }
+
+    .donor-name {
+      font-size:19px;
+      font-weight: bold;
+      color:#333;
+      margin-bottom:4px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:100%;
+      border-bottom: 2px solid rgba(0,0,0,0.2);
+    }
+
+    .donor-total {
+      font-size:18px;
+      font-weight:800;
+      color: forestgreen;
+    }
+
+    /* TOTAL GLOBAL */
+    .total-box {
+      float:center;
+      background: #fbfff6;
+      border:2px solid gray;
+      padding:14px 18px;
+      border-radius:10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      text-align: center;
+      margin-top:6px;
+    }
+    
+    .total-box .label {
+      color:#666;
+      font-weight:700;
+      font-size:16px;
+    }
+    
+    .total-box .value {
+      color:forestgreen;
+      font-weight:900;
+      font-size:20px;
+      margin-top:6px;
+    }
+
+    @media(max-width:640px){
+      .donation-item {
+        flex-direction:row;
+        padding:14px;
+      }
+      .rank-big {
+        font-size:42px;
+        width:60px;
+      }
+    }
+    .coin {
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
+      margin-bottom: -3px;
+    }
+.toggle-don {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  margin: 45px auto 0 auto;
+  overflow: none;
+  font-weight: bold;
+}
+
+.toggle-don a {
+  flex: 1;
+  text-align: center;
+  padding: 0 0;
+  padding-top: 2px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff8c00;
+  transition: background 0.3s;
+}
+
+.toggle-don a:hover {
+  background-color: #e67600; /* efek hover */
+}
+  
+.toggle-don a.on {
+  border: 3px solid #fffbea;
+  background-color: #cc6600;
+  transform: scale(1.15);
+  border-radius: 0 0 8px 8px;
+}
+
