@@ -1,0 +1,233 @@
+.content {
+  max-width: 700px;
+  text-align: center;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 2px solid #ddd;
+}
+h1 {
+  color: #f59e0b;
+  text-align: center;
+  font-size: 3.4em;
+  margin-bottom: -4px !important;
+  font-family: minecraft;
+  margin-top: -5px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+i {
+  font-style: italic;
+  color: #6b7280;
+  background: #fff4cc;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+b {
+  color: #f59e0b; /* kuning-oranye cerah */
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  background: #fff3bf; /* highlight lembut */
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+strong {
+  color: #f59e0b;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.text-box {
+  background-color: white;     /* background putih */
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  border-radius: 10px;         /* sudut membulat */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* bayangan lembut */
+  width: 320px;          /* ukuran menyesuaikan isi */
+  max-width: 400px;            /* batas lebar */
+  border: 1px solid #ddd;
+  display: block;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+
+.judul {
+  color: #f59e0b;                /* warna hitam */
+  font-weight: ;
+  font-family: minecraft;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 0 0.5px 0 rgba(0,0,0,0.1), 0 2px 0 #d97706;
+}
+
+.teks {
+  color: #aaa;                 /* abu-abu lembut */
+  font-size: 14px;             /* lebih kecil */
+  line-height: 1.5;            /* jarak antar baris */
+  border-top: 2.5px solid rgba(218,218,218,0.9);
+  borer-bottom: 2px solid rgba(221,221,221,0.7);
+  margin-bottom: 14px;
+  font-weight: ;
+}
+.teks2, .teks3 {
+  color: #aaa;                 /* abu-abu lembut */
+  font-size: 14px;             /* lebih kecil */
+  line-height: 1.5;            /* jarak antar baris */
+  borer-top: 2.5px solid rgba(218,218,218,0.9);
+  borer-bottom: 2px solid rgba(221,221,221,0.7);
+  margin-top: -10px;
+  font-weight: ;
+}
+.form {
+  border: none;
+  display: block;
+  background-color: #f7b500;
+  color: white;
+  padding: 8px 139px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: center;
+  min-width: 150px;
+  font-size: 16px;
+  margin: 0 auto;
+  margin-bottom: 14px;
+  margin-top: -18px;
+}
+.terima {
+  font-size: 16px;
+  color: #bbb;
+  font-weight: bold;
+  opacity: 70%;
+  margin-left: 225px;
+}
+.mungkin {
+  font-size: 12px;
+  color: orange;
+  font-weight: bold;
+  opacity: 70%;
+}
+.tidak {
+  font-size: 12px;
+  color: crimson;
+  font-weight: bold;
+  opacity: 70%;
+}
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  opacity: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: rgba(0,0,0,0);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+#overlay.active {
+  opacity: 1;
+  background: rgba(0,0,0,0.55);
+  pointer-events: auto;
+}
+
+
+.content2 {
+  background-color: white;
+  margin: 10px auto;
+  padding-top: 12px;
+  width: 100%;
+  border-radius: 8px;
+  max-width: 700px;
+}
+/*
+#overlay .content2 {
+    background: white;
+    margin: 40px auto;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+} */
+.open-overlay {
+    display: block;            /* agar bisa full width */
+    width: 96%;               /* lebar penuh */
+    max-width: 400px;          /* batas maksimal agar tidak terlalu besar */
+    margin: 16px auto;         /* auto = posisi center */
+    padding: 10px 20px;
+    background: #f7b500;       /* warna tombol */
+    font-family: minecraft;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 1.5px 0 rgba(0,0,0,0.1), 0 6px 0 #d97706;
+}
+
+/* efek hover */
+.open-overlay:active {
+    background: #f7b500;
+    transform: translateY(4px);
+    box-shadow: 0 1.5px 0 rgba(0,0,0,0.1), 0 2px 0 #d97706;
+}
+.content2 button.x-btn {
+    position: absolute;
+    top: 55px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background: #f7b500;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+}
+/* Judul Overlay */
+.content2 h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    color: #f59e0b;
+    font-family: minecraft;
+}
+
+/* Deskripsi Overlay */
+.content2 p {
+    font-family: "Roboto";
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+    color: #888;
+    margin: 0 20px;
+    padding-bottom: 16px;
+}
+
+t {
+  font-weight: bold;
+}
+
+m {
+  font-size: 10px !important;
+}
+
+mm {
+  font-size: 14px;
+}
